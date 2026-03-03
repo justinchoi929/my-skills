@@ -1,11 +1,6 @@
 ---
-description: '以博主 JustinChoi 的个人写作风格撰写博客文章，模拟其语气、结构和表达习惯'
-allowed-tools: Read(**), Write(**), Glob(**), Grep(**), WebSearch, WebFetch
-argument-hint: <文章主题或标题> [--type <tech|experience|essay>]
-# examples:
-#   - /zcf:write-blog Docker Compose入门            # 写一篇技术教程
-#   - /zcf:write-blog 秋招总结 --type experience     # 写一篇经验分享
-#   - /zcf:write-blog 关于gap year --type essay       # 写一篇随笔
+name: write-blog
+description: '以博主 JustinChoi 的个人写作风格撰写博客文章，模拟其语气、结构和表达习惯。支持技术教程(tech)、经验分享(experience)、随笔(essay)三种类型。'
 ---
 
 # Write Blog - 以 JustinChoi 风格写作

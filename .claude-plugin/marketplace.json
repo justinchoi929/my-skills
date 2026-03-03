@@ -1,0 +1,22 @@
+{
+  "name": "my-skills",
+  "owner": {
+    "name": "JustinChoi",
+    "email": ""
+  },
+  "metadata": {
+    "description": "JustinChoi 的个人 Skills 集合",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "my-skills",
+      "description": "个人技能集合，包括博客写作等",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./write-blog"
+      ]
+    }
+  ]
+}
