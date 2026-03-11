@@ -15,7 +15,8 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./write-blog"
+        "./write-blog",
+        "./code-factory"
       ]
     }
   ]
