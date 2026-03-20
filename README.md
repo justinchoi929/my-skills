@@ -1,97 +1,109 @@
 # My Skills
 
-个人 Skills 集合，遵循 [Anthropic Skills 格式](https://github.com/anthropics/skills) 开放标准。
+JustinChoi 的个人 Skills 集合，遵循 [Anthropic Agent Skills 标准](https://agentskills.io)。
+
+每个 Skill 是一个自包含的目录，包含 `SKILL.md` 指令文件和可选的资源文件。浏览下方技能列表了解详情，或直接安装使用。
+
+## Skills 一览
+
+### [write-blog](./write-blog)
+
+以博主 JustinChoi 的个人写作风格撰写博客文章，模拟其语气、结构和表达习惯。
+
+- **调用方式：** `/zcf:write-blog <文章主题> [--type <类型>]`
+- **支持类型：** 技术教程 (`tech`)、经验分享 (`experience`)、随笔 (`essay`)
+- **核心特点：** 实用型学习笔记风格，正式与随意结合，大量使用反引号标记技术术语
+
+```
+write-blog/
+└── SKILL.md
+```
+
+---
+
+### [code-factory](./code-factory)
+
+Claude 与 Codex 双 AI 协作开发工作流。Claude 负责需求分析和架构设计，Codex 负责评审、代码实现和测试。
+
+- **调用方式：** `/code-factory <需求描述>` 或 `/code-factory @docs/requirement.md`
+- **核心角色：** Claude（架构师）+ Codex（工程师）
+- **执行流程：** 环境检查 → 需求分析 → Codex 评审 → 多轮讨论 → 并行实现 → 交叉 Review → 最终报告
+- **核心特点：** 多轮讨论收敛、多 Codex 并行实现、互相 Review 全闭环
+
+```
+code-factory/
+├── SKILL.md
+├── assets/            # 设计/计划/报告/评审模板
+└── references/        # Codex 调用提示词
+```
 
 ## 安装使用
 
+在 Claude Code 中运行：
+
 ```bash
-# 1. 注册 marketplace
+# 注册 marketplace
 claude plugin marketplace add justinchoi929/my-skills
 
-# 2. 安装插件
+# 安装插件
 claude plugin install my-skills
-
-# 3. 重启 Claude Code 后，通过 /skill-name 调用
 ```
 
-更新已安装的插件：
+安装后通过 `/skill-name` 调用。更新插件：
 
 ```bash
 claude plugin update my-skills
 ```
 
-## Skills 格式规范
+## 创建新 Skill
 
-### 目录结构
-
-每个 Skill 是一个独立目录，至少包含一个 `SKILL.md` 文件：
-
-```
-my-skills/                     # 技能集合根目录
-├── .claude-plugin/
-│   └── marketplace.json       # 插件清单（Claude Code Plugin 注册）
-├── skill-a/                   # 单个技能（推荐 kebab-case 命名）
-│   ├── SKILL.md               # 必需：包含元数据和指令
-│   ├── scripts/               # 可选：可执行脚本（如 .py、.sh）
-│   ├── references/            # 可选：参考文档
-│   ├── assets/                # 可选：模板、配置文件等资源
-│   └── examples/              # 可选：使用示例
-├── skill-b/
-│   └── SKILL.md
-└── README.md
-```
-
-### SKILL.md 文件格式
-
-由 **YAML frontmatter（元数据）** 和 **Markdown 正文（指令）** 两部分组成：
+1. 新建目录，添加 `SKILL.md`（包含 YAML frontmatter + Markdown 指令）：
 
 ```markdown
 ---
 name: my-skill-name
-description: '清晰描述这个 Skill 做什么以及什么时候使用它'
+description: '描述这个 Skill 做什么以及什么时候用'
 ---
 
 # Skill 标题
 
-正文内容：详细的指令、上下文、执行流程等。
-
-## Examples
-- 示例 1
-- 示例 2
-
-## Guidelines
-- 规则 1
-- 规则 2
+指令正文...
 ```
 
-#### Frontmatter 字段
-
-| 字段 | 必需 | 说明 |
-|------|------|------|
-| `name` | 是 | 技能唯一标识符，小写 + 连字符（kebab-case），即 `/` 后的调用名 |
-| `description` | 是 | 完整描述该技能做什么、什么时候用 |
-
-#### 命名规范
-
-- 目录名使用 **kebab-case**（如 `write-blog`、`code-review`）
-- 核心文件固定为 `SKILL.md`（全大写）
-
-## 新增 Skill
-
-1. 创建新目录并添加 `SKILL.md`：
-
-```
-my-new-skill/
-└── SKILL.md
-```
-
-2. 在 `.claude-plugin/marketplace.json` 的 `skills` 数组中添加路径：
+2. 在 `.claude-plugin/marketplace.json` 的 `skills` 数组中注册路径：
 
 ```json
 "skills": [
   "./write-blog",
+  "./code-factory",
   "./my-new-skill"
 ]
 ```
 
-3. 提交推送后，运行 `claude plugin update my-skills` 更新。
+3. 提交推送后运行 `claude plugin update my-skills` 更新。
+
+## 目录结构
+
+```
+my-skills/
+├── .claude-plugin/
+│   └── marketplace.json       # 插件清单
+├── write-blog/                # 博客写作技能
+│   └── SKILL.md
+├── code-factory/              # 双AI协作开发技能
+│   ├── SKILL.md
+│   ├── assets/
+│   └── references/
+└── README.md
+```
+
+每个 Skill 目录支持以下可选子目录：
+
+| 目录 | 用途 |
+|------|------|
+| `assets/` | 模板、配置文件等资源 |
+| `references/` | 参考文档 |
+| `scripts/` | 可执行脚本 |
+| `examples/` | 使用示例 |
+
+更多信息参见 [Agent Skills 规范](https://agentskills.io) 和 [创建自定义 Skills](https://support.claude.com/en/articles/12512198-creating-custom-skills)。

@@ -10,12 +10,20 @@
   },
   "plugins": [
     {
-      "name": "my-skills",
-      "description": "个人技能集合，包括博客写作等",
+      "name": "write-blog",
+      "description": "以博主 JustinChoi 的个人写作风格撰写博客文章，支持技术教程、经验分享、随笔三种类型",
       "source": "./",
       "strict": false,
       "skills": [
-        "./write-blog",
+        "./write-blog"
+      ]
+    },
+    {
+      "name": "code-factory",
+      "description": "Claude 与 Codex 双 AI 协作开发工作流，支持多轮讨论收敛、多 Codex 并行实现、互相 Review 全闭环",
+      "source": "./",
+      "strict": false,
+      "skills": [
         "./code-factory"
       ]
     }
