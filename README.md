@@ -2,40 +2,7 @@
 
 JustinChoi 的个人 Skills 集合，遵循 [Anthropic Agent Skills 标准](https://agentskills.io)。
 
-每个 Skill 是一个自包含的目录，包含 `SKILL.md` 指令文件和可选的资源文件。浏览下方技能列表了解详情，或直接安装使用。
-
-## Skills 一览
-
-### [write-blog](./write-blog)
-
-以博主 JustinChoi 的个人写作风格撰写博客文章，模拟其语气、结构和表达习惯。
-
-- **调用方式：** `/zcf:write-blog <文章主题> [--type <类型>]`
-- **支持类型：** 技术教程 (`tech`)、经验分享 (`experience`)、随笔 (`essay`)
-- **核心特点：** 实用型学习笔记风格，正式与随意结合，大量使用反引号标记技术术语
-
-```
-write-blog/
-└── SKILL.md
-```
-
----
-
-### [code-factory](./code-factory)
-
-Claude 与 Codex 双 AI 协作开发工作流。Claude 负责需求分析和架构设计，Codex 负责评审、代码实现和测试。
-
-- **调用方式：** `/code-factory <需求描述>` 或 `/code-factory @docs/requirement.md`
-- **核心角色：** Claude（架构师）+ Codex（工程师）
-- **执行流程：** 环境检查 → 需求分析 → Codex 评审 → 多轮讨论 → 并行实现 → 交叉 Review → 最终报告
-- **核心特点：** 多轮讨论收敛、多 Codex 并行实现、互相 Review 全闭环
-
-```
-code-factory/
-├── SKILL.md
-├── assets/            # 设计/计划/报告/评审模板
-└── references/        # Codex 调用提示词
-```
+每个 Skill 是一个自包含的目录，包含 `SKILL.md` 指令文件和可选的资源文件。
 
 ## 安装使用
 
